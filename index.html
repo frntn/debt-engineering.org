@@ -8,15 +8,22 @@
   
   <!-- PicoCSS minimal framework -->
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
-  
+
   <style>
-    /* ===== Custom tweaks for layout ===== */
     :root {
       --accent: #003cff;
     }
-    body {
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --accent: #5b7eff;
+      }
+    }
+
+    html {
       scroll-behavior: smooth;
     }
+
     nav {
       position: fixed;
       top: 0;
@@ -24,26 +31,35 @@
       background: var(--pico-background-color);
       border-bottom: 1px solid var(--pico-muted-border-color);
       z-index: 1000;
+      backdrop-filter: blur(8px);
     }
+
     nav ul {
       display: flex;
       justify-content: center;
       list-style: none;
       margin: 0;
-      padding: 0.5rem;
+      padding: 0.75rem 1rem;
     }
-    nav li { margin: 0 1rem; }
+
+    nav li {
+      margin: 0 1rem;
+    }
+
     nav a {
       text-decoration: none;
       color: var(--pico-muted-color);
+      font-weight: 500;
     }
+
     nav a.active {
       color: var(--accent);
-      font-weight: 600;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.25rem;
     }
 
     main {
-      padding-top: 5rem; /* offset for fixed nav */
+      padding-top: 6rem; /* offset for fixed nav */
       max-width: 800px;
       margin: auto;
     }
@@ -56,6 +72,18 @@
       background: var(--pico-muted-border-color);
       padding: 1rem;
       border-radius: 4px;
+      overflow-x: auto;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      font-style: italic;
+    }
+
+    footer {
+      text-align: center;
+      margin: 4rem 0 2rem 0;
     }
   </style>
 </head>
@@ -78,7 +106,11 @@
       <h1>Debt Engineering</h1>
       <p class="lead">Turning innovation debt into a material for progress.</p>
       <p><em>The DEBT Framework — Debt Engineering & Bet Tracking.</em></p>
-      <p>Debt Engineering reframes innovation debt not as a defect to erase, but as a material to shape in the learning cycle of progress.</p>
+      <p>
+        <strong>Debt Engineering</strong> reframes innovation debt not as a defect to erase,
+        but as a material to shape in the learning cycle of progress.  
+        It’s the discipline of <em>sustainable velocity</em> — going fast without forgetting.
+      </p>
     </section>
 
     <section id="framework">
@@ -95,7 +127,10 @@
 
     <section id="typologies">
       <h2>Beyond Classical Typologies</h2>
-      <p>Debt Engineering expands the notion of debt beyond the traditional technical / functional / organizational lens.</p>
+      <p>
+        <strong>Debt Engineering</strong> expands the notion of debt beyond the traditional
+        technical, functional, or organizational lens.
+      </p>
       <ul>
         <li><strong>Structural Debt</strong> — foundational design choices that shape future optionality</li>
         <li><strong>Cognitive Debt</strong> — knowledge gaps and learning delays in fast-evolving ecosystems</li>
@@ -103,17 +138,27 @@
         <li><strong>Organizational Debt</strong> — misalignments between speed, rhythm, and governance</li>
         <li><strong>Ethical Debt</strong> — decisions made faster than accountability</li>
       </ul>
+      <blockquote>
+        “We don’t eliminate these debts — we engineer them into the system’s design.”
+      </blockquote>
     </section>
 
     <section id="why">
       <h2>Why It Matters</h2>
-      <p>Innovation without structure collapses under its own speed. Governance without adaptability freezes progress. Debt Engineering bridges the two — it’s the discipline of sustainable velocity.</p>
+      <p>
+        Innovation without structure collapses under its own speed.  
+        Governance without adaptability freezes progress.  
+        <strong>Debt Engineering</strong> bridges the two — it’s the discipline of sustainable velocity.
+      </p>
       <blockquote>“The goal is not to eliminate debt, but to integrate it into the design of velocity.”</blockquote>
     </section>
 
     <section id="community">
       <h2>Join the Community</h2>
-      <p>The DEBT Framework is open and evolving — built collectively by architects, innovators, and designers who believe that speed and sustainability can coexist.</p>
+      <p>
+        The <strong>DEBT Framework</strong> is open and evolving — built collectively by architects, innovators,
+        and designers who believe that speed and sustainability can coexist.
+      </p>
       <ul>
         <li><a href="https://github.com/YOURORG/debt-engineering">View the project on GitHub</a></li>
         <li><a href="https://twitter.com/YOURHANDLE">Follow updates on X</a></li>
@@ -126,15 +171,15 @@
     </footer>
   </main>
 
+  <!-- Scroll spy -->
   <script>
-    // Scroll Spy (for highlighting active nav link)
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav a');
 
     window.addEventListener('scroll', () => {
       let current = '';
       sections.forEach(section => {
-        const sectionTop = section.offsetTop - 140;
+        const sectionTop = section.offsetTop - 150;
         if (scrollY >= sectionTop) current = section.id;
       });
       navLinks.forEach(link => {
