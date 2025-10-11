@@ -14,6 +14,8 @@ nav:
       label: "Cultural Shift"
     - id: "community"
       label: "Community"
+    - url: "/chapters/"
+      label: "Book"
 language_switcher:
   label: "Language"
   options:

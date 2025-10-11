@@ -14,6 +14,8 @@ nav:
       label: "Culture"
     - id: "community"
       label: "Communauté"
+    - url: "/chapters/"
+      label: "Livre"
 language_switcher:
   label: "Langue"
   options:

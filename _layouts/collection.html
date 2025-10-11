@@ -1,0 +1,29 @@
+---
+layout: base
+---
+{% assign coll = page.collection %}
+<section class="py-12">
+  <div class="mb-8 text-center">
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-[-0.02em] text-gray-900 dark:text-white">{{ page.title }}</h1>
+    {% if page.summary %}
+      <p class="mt-3 text-lg text-gray-600 dark:text-gray-400">{{ page.summary }}</p>
+    {% endif %}
+  </div>
+  <div class="grid gap-6">
+    {% assign items = site[coll] | where: 'lang', page.lang | sort: 'order' %}
+    {% for p in items %}
+      <article class="rounded-lg border border-gray-200 dark:border-gray-800 bg-white/70 dark:bg-white/5 p-6">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+          <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+        </h2>
+        {% if p.summary %}
+          <p class="mt-2 text-gray-600 dark:text-gray-400">{{ p.summary }}</p>
+        {% endif %}
+        <div class="mt-3">
+          <a href="{{ p.url | relative_url }}" class="text-primary font-semibold hover:underline">Read</a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+

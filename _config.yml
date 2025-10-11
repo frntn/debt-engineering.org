@@ -8,6 +8,24 @@ permalink: "/:path/"
 collections:
   posts:
     output: false
+  chapters:
+    output: true
+    permalink: /chapters/:path/
+  practices:
+    output: true
+    permalink: /practices/:path/
+  patterns:
+    output: true
+    permalink: /patterns/:path/
+  cases:
+    output: true
+    permalink: /cases/:path/
+  reference:
+    output: true
+    permalink: /reference/:path/
+  glossary:
+    output: true
+    permalink: /glossary/:path/
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap

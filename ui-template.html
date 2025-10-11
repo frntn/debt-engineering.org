@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DEBT Framework Manifesto</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0636f4",
+              "background-light": "#f5f6f8",
+              "background-dark": "#0f1323",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.125rem",
+              "lg": "0.25rem",
+              "xl": "0.5rem",
+              "full": "0.75rem"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col dark group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="px-4 md:px-10 lg:px-40 flex justify-center">
+<div class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 px-4 py-3 w-full max-w-[960px]">
+<div class="flex items-center gap-4 text-gray-900 dark:text-white">
+<div class="size-5">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">DEBT Framework</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-gray-600 dark:text-gray-300 text-sm font-medium leading-normal" href="#introduction">Introduction</a>
+<a class="text-gray-600 dark:text-gray-300 text-sm font-medium leading-normal" href="#framework">The Framework</a>
+<a class="text-gray-600 dark:text-gray-300 text-sm font-medium leading-normal" href="#typologies">Typologies</a>
+<a class="text-gray-600 dark:text-gray-300 text-sm font-medium leading-normal" href="#culture">Cultural Shift</a>
+<a class="text-gray-600 dark:text-gray-300 text-sm font-medium leading-normal" href="#community">Community</a>
+</div>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 w-10 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0">
+<span class="material-symbols-outlined text-xl">dark_mode</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-5 mt-16">
+<div class="layout-content-container flex flex-col max-w-[850px] flex-1 px-4">
+<!-- 1. Introduction -->
+<section class="py-20 md:py-32" id="introduction">
+<div class="text-center">
+<h1 class="text-gray-900 dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">Debt as a Design Material</h1>
+<p class="text-gray-600 dark:text-gray-400 mt-4 text-base md:text-lg">A manifesto for engineering with debt, not just repairing it.</p>
+</div>
+<div class="mt-16 md:mt-24">
+<blockquote class="text-center">
+<p class="text-gray-800 dark:text-gray-200 text-2xl md:text-4xl font-bold leading-tight tracking-tight">Debt is not a burden to be cleared, but a material to be shaped.</p>
+</blockquote>
+</div>
+</section>
+<!-- 2. The DEBT Framework -->
+<section class="py-16 md:py-24 border-t border-gray-200 dark:border-gray-800" id="framework">
+<h2 class="text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-[-0.015em] text-center">The DEBT Framework</h2>
+<div class="mt-12 grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">engineering</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Engineer</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Intentionally design and architect systems with debt as a known component.</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">casino</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Bet</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Make conscious, calculated wagers on which debts to incur for strategic advantage.</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">monitoring</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Track</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Continuously monitor the impact and cost of incurred debt on the system.</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">transform</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Transform</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Evolve the debt, paying it down, refinancing it, or letting it mature as planned.</p>
+</div>
+</div>
+</section>
+<!-- 3. Typologies of Debt -->
+<section class="py-16 md:py-24 border-t border-gray-200 dark:border-gray-800" id="typologies">
+<h2 class="text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-[-0.015em] text-center">Typologies of Debt</h2>
+<div class="mt-12 overflow-x-auto">
+<div class="bg-background-light dark:bg-background-dark border border-gray-200 dark:border-gray-800 rounded-lg">
+<div class="grid grid-cols-1 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-gray-800">
+<div class="p-6">
+<h4 class="font-bold text-gray-900 dark:text-white">Structural</h4>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Architectural compromises made for speed or convenience.</p>
+</div>
+<div class="p-6">
+<h4 class="font-bold text-gray-900 dark:text-white">Cognitive</h4>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Complexity or lack of clarity that burdens understanding.</p>
+</div>
+<div class="p-6">
+<h4 class="font-bold text-gray-900 dark:text-white">Experimental</h4>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Temporary solutions built to validate a hypothesis.</p>
+</div>
+<div class="p-6">
+<h4 class="font-bold text-gray-900 dark:text-white">Organizational</h4>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Misalignments in team structure or process.</p>
+</div>
+<div class="p-6">
+<h4 class="font-bold text-gray-900 dark:text-white">Ethical</h4>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Decisions that trade user well-being for business goals.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Cultural Shift -->
+<section class="py-16 md:py-24 border-t border-gray-200 dark:border-gray-800" id="culture">
+<h2 class="text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-[-0.015em] text-center">From Burden to Structure</h2>
+<div class="mt-12 space-y-12">
+<blockquote class="border-l-4 border-primary pl-6">
+<p class="text-xl italic text-gray-700 dark:text-gray-300">"We stopped talking about 'fixing' debt and started talking about 'investing' in it. The entire emotional landscape of engineering changed."</p>
+</blockquote>
+<blockquote class="border-l-4 border-primary pl-6">
+<p class="text-xl italic text-gray-700 dark:text-gray-300">"Lucidity is the goal. When debt is visible, named, and tracked, it loses its power to create fear and gains the potential to create value."</p>
+</blockquote>
+</div>
+</section>
+<!-- 5. Community Call -->
+<section class="py-16 md:py-24 border-t border-gray-200 dark:border-gray-800" id="community">
+<h2 class="text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-[-0.015em] text-center">Join the Conversation</h2>
+<div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+<a class="flex items-center gap-2 text-primary font-medium hover:underline" href="#">
+<span class="material-symbols-outlined text-xl">code</span>
+                  View on GitHub
+                </a>
+<a class="flex items-center gap-2 text-primary font-medium hover:underline" href="#">
+<span class="material-symbols-outlined text-xl">article</span>
+                  Read the Manifesto
+                </a>
+<a class="flex items-center gap-2 text-primary font-medium hover:underline" href="#">
+<span class="material-symbols-outlined text-xl">forum</span>
+                  Start a Discussion
+                </a>
+</div>
+</section>
+</div>
+</main>
+</div>
+</div>
+</body></html>

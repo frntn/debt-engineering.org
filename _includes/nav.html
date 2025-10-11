@@ -12,9 +12,15 @@
       <div class="flex flex-1 items-center justify-end gap-6 md:gap-8">
         <nav class="hidden md:flex items-center gap-9">
           {% for item in i18n.nav.items %}
-            <a href="#{{ item.id }}" data-section-target="{{ item.id }}" class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 transition-colors hover:text-primary dark:hover:text-primary">
-              {{ item.label }}
-            </a>
+            {% if item.url %}
+              <a href="{{ item.url | relative_url }}" class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 transition-colors hover:text-primary dark:hover:text-primary">
+                {{ item.label }}
+              </a>
+            {% else %}
+              <a href="#{{ item.id }}" data-section-target="{{ item.id }}" class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 transition-colors hover:text-primary dark:hover:text-primary">
+                {{ item.label }}
+              </a>
+            {% endif %}
           {% endfor %}
         </nav>
         <div class="flex items-center gap-3">
