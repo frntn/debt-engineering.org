@@ -7,58 +7,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ i18n.meta.title }}</title>
   <meta name="description" content="{{ i18n.meta.description }}">
-  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
-  {% seo %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <script>
+    const storedTheme = localStorage.getItem('site-theme');
+    if (storedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0636f4',
+            'background-light': '#f5f6f8',
+            'background-dark': '#0f1323',
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          borderRadius: {
+            DEFAULT: '0.125rem',
+            lg: '0.25rem',
+            xl: '0.5rem',
+            full: '0.75rem',
+          },
+        },
+      },
+    }
+  </script>
   <style>
-    :root { --accent: #003cff; }
-    @media (prefers-color-scheme: dark) { :root { --accent: #5b7eff; } }
-    html { scroll-behavior: smooth; }
-    nav { position: fixed; top: 0; width: 100%; background: var(--pico-background-color); border-bottom: 1px solid var(--pico-muted-border-color); z-index: 1000; backdrop-filter: blur(8px); }
-    nav ul { display: flex; justify-content: center; align-items: center; list-style: none; margin: 0; padding: 0.75rem 1rem; flex-wrap: wrap; gap: 0.75rem; }
-    nav li { margin: 0; }
-    nav a { text-decoration: none; color: var(--pico-muted-color); font-weight: 500; }
-    nav a.active { color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 0.25rem; }
-    nav li.lang-switcher { margin-left: 2rem; }
-    nav .lang-switcher a { padding: 0.35rem 0.9rem; border-radius: 999px; border: 1px solid var(--pico-muted-border-color); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 0.35rem; }
-    nav .lang-switcher a.active { border-color: var(--accent); color: var(--accent); }
-    nav .lang-switcher span { display: inline-flex; align-items: center; gap: 0.35rem; }
-    main { padding-top: 6.5rem; max-width: 850px; margin: auto; line-height: 1.7; }
-    section { margin: 5rem 0; }
-    pre { background: var(--pico-muted-border-color); padding: 1rem; border-radius: 4px; overflow-x: auto; }
-    blockquote { border-left: 4px solid var(--accent); padding-left: 1rem; font-style: italic; }
-    footer { text-align: center; margin: 4rem 0 2rem 0; }
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
-    @media (max-width: 640px) {
-      nav li.lang-switcher { margin-left: 0; width: 100%; display: flex; justify-content: center; }
-      main { padding-top: 7.5rem; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
   </style>
+  {% seo %}
 </head>
-<body>
-  {% include nav.html lang=current_lang i18n=i18n %}
-  <main>
-    {{ content }}
-  </main>
-  {% include footer.html lang=current_lang i18n=i18n %}
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white">
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    <div class="flex h-full grow flex-col">
+      {% include nav.html lang=current_lang i18n=i18n %}
+      <main class="flex flex-1 justify-center py-5 mt-16">
+        <div class="flex w-full max-w-[960px] flex-1 flex-col px-4 md:px-10 lg:px-20">
+          {{ content }}
+        </div>
+      </main>
+      {% include footer.html lang=current_lang i18n=i18n %}
+    </div>
+  </div>
   <script>
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a[data-section-target]');
     const highlightCurrentSection = () => {
       let current = '';
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 150;
+        const sectionTop = section.offsetTop - 180;
         if (window.scrollY >= sectionTop) current = section.id;
       });
       navLinks.forEach((link) => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
+        link.classList.remove('text-primary');
+        link.classList.remove('dark:text-white');
+        if (link.dataset.sectionTarget === current) {
+          link.classList.add('text-primary');
+          link.classList.add('dark:text-white');
         }
       });
     };
 
     window.addEventListener('scroll', highlightCurrentSection);
-    highlightCurrentSection();
+    document.addEventListener('DOMContentLoaded', highlightCurrentSection);
+
+    const toggleButton = document.getElementById('theme-toggle');
+    const syncTheme = () => {
+      if (document.documentElement.classList.contains('dark')) {
+        toggleButton?.setAttribute('data-theme', 'dark');
+      } else {
+        toggleButton?.setAttribute('data-theme', 'light');
+      }
+    };
+
+    toggleButton?.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('site-theme', isDark ? 'dark' : 'light');
+      syncTheme();
+    });
+
+    syncTheme();
   </script>
 </body>
 </html>

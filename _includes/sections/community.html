@@ -1,12 +1,23 @@
-<section id="community">
-  <h2>{{ i18n.community.heading }}</h2>
-  {% for paragraph in i18n.community.paragraphs_html %}
-    <p>{{ paragraph }}</p>
-  {% endfor %}
-  <ul>
+<section id="community" class="py-16 md:py-24 border-t border-gray-200 dark:border-gray-800">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">
+      {{ i18n.community.heading }}
+    </h2>
+    <div class="mt-6 space-y-4 text-base md:text-lg text-gray-600 dark:text-gray-400">
+      {% for paragraph in i18n.community.paragraphs_html %}
+        <p>{{ paragraph }}</p>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="mt-12 flex flex-col items-center justify-center gap-4 md:flex-row md:gap-8">
     {% for link in i18n.community.links %}
-      <li><a href="{{ link.href }}">{{ link.label }}</a></li>
+      <a href="{{ link.href }}" class="flex items-center gap-2 text-primary font-medium hover:underline">
+        {% if link.icon %}<span class="material-symbols-outlined text-xl">{{ link.icon }}</span>{% endif %}
+        {{ link.label }}
+      </a>
     {% endfor %}
-  </ul>
-  <blockquote>{{ i18n.community.quote }}</blockquote>
+  </div>
+  <div class="mt-12 text-center">
+    <blockquote class="text-xl italic text-gray-700 dark:text-gray-300">“{{ i18n.community.quote }}”</blockquote>
+  </div>
 </section>

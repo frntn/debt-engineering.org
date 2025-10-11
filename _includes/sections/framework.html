@@ -1,11 +1,26 @@
-<section id="framework">
-  <h2>{{ i18n.framework.heading }}</h2>
-  <p>{{ i18n.framework.description_html }}</p>
-  <pre>{{ i18n.framework.loop }}</pre>
-  <p>{{ i18n.framework.context_html }}</p>
-  {% for step in i18n.framework.steps %}
-    <h3>{{ step.title }}</h3>
-    <p>{{ step.body_html }}</p>
-  {% endfor %}
-  <blockquote>{{ i18n.framework.quote }}</blockquote>
+<section id="framework" class="py-16 md:py-24 border-t border-gray-200 dark:border-gray-800">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">
+      {{ i18n.framework.heading }}
+    </h2>
+    <p class="mt-6 text-base md:text-lg text-gray-600 dark:text-gray-400">
+      {{ i18n.framework.description_html }}
+    </p>
+  </div>
+  <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-4">
+    {% for step in i18n.framework.steps %}
+      <div class="flex flex-col items-center rounded-lg border border-gray-200 dark:border-gray-800 bg-white/70 dark:bg-white/5 p-6 text-center shadow-sm">
+        <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20">
+          <span class="material-symbols-outlined text-3xl text-primary">{{ step.icon }}</span>
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white">{{ step.title }}</h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{{ step.body_html }}</p>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="mt-12 text-center">
+    <span class="inline-flex items-center rounded-full border border-primary/40 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary">
+      {{ i18n.framework.loop }}
+    </span>
+  </div>
 </section>

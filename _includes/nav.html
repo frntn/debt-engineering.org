@@ -1,16 +1,37 @@
-<nav>
-  <ul>
-    <li><a href="#intro" class="active">{{ i18n.nav.intro }}</a></li>
-    <li><a href="#framework">{{ i18n.nav.framework }}</a></li>
-    <li><a href="#typologies">{{ i18n.nav.typologies }}</a></li>
-    <li><a href="#culture">{{ i18n.nav.culture }}</a></li>
-    <li><a href="#community">{{ i18n.nav.community }}</a></li>
-    <li class="lang-switcher">
-      <span class="sr-only">{{ i18n.language_switcher.label }}</span>
-      <span>
-        <a href="{{ '/' | relative_url }}" class="{% if lang == 'en' %}active{% endif %}">{{ i18n.language_switcher.options.en }}</a>
-        <a href="{{ '/fr/' | relative_url }}" class="{% if lang == 'fr' %}active{% endif %}">{{ i18n.language_switcher.options.fr }}</a>
-      </span>
-    </li>
-  </ul>
-</nav>
+<header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+  <div class="px-4 md:px-10 lg:px-20 flex justify-center">
+    <div class="flex w-full max-w-[960px] items-center justify-between border-b border-gray-200 dark:border-gray-800 px-4 py-3">
+      <div class="flex items-center gap-4 text-gray-900 dark:text-white">
+        <div class="h-5 w-5">
+          <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" />
+          </svg>
+        </div>
+        <h2 class="text-lg font-bold tracking-[-0.015em]">{{ i18n.meta.brand }}</h2>
+      </div>
+      <div class="hidden md:flex flex-1 items-center justify-end gap-8">
+        <nav class="flex items-center gap-9">
+          {% for item in i18n.nav.items %}
+            <a href="#{{ item.id }}" data-section-target="{{ item.id }}" class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 transition-colors hover:text-primary dark:hover:text-primary">
+              {{ item.label }}
+            </a>
+          {% endfor %}
+        </nav>
+        <div class="flex items-center gap-3">
+          <button id="theme-toggle" type="button" class="flex h-10 w-10 items-center justify-center rounded bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white" aria-label="Toggle color theme">
+            <span class="material-symbols-outlined">dark_mode</span>
+          </button>
+          <div class="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-300">
+            <span class="sr-only">{{ i18n.language_switcher.label }}</span>
+            <a href="{{ '/' | relative_url }}" class="rounded-full px-3 py-1 border transition-colors {% if lang == 'en' %}border-primary text-primary dark:text-white{% else %}border-transparent hover:border-primary hover:text-primary{% endif %}">
+              {{ i18n.language_switcher.options.en }}
+            </a>
+            <a href="{{ '/fr/' | relative_url }}" class="rounded-full px-3 py-1 border transition-colors {% if lang == 'fr' %}border-primary text-primary dark:text-white{% else %}border-transparent hover:border-primary hover:text-primary{% endif %}">
+              {{ i18n.language_switcher.options.fr }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
