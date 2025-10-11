@@ -9,8 +9,8 @@
         </div>
         <h2 class="text-lg font-bold tracking-[-0.015em]">{{ i18n.meta.brand }}</h2>
       </div>
-      <div class="hidden md:flex flex-1 items-center justify-end gap-8">
-        <nav class="flex items-center gap-9">
+      <div class="flex flex-1 items-center justify-end gap-6 md:gap-8">
+        <nav class="hidden md:flex items-center gap-9">
           {% for item in i18n.nav.items %}
             <a href="#{{ item.id }}" data-section-target="{{ item.id }}" class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 transition-colors hover:text-primary dark:hover:text-primary">
               {{ item.label }}
@@ -23,10 +23,10 @@
           </button>
           <div class="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-300">
             <span class="sr-only">{{ i18n.language_switcher.label }}</span>
-            <a href="{{ '/' | relative_url }}" class="rounded-full px-3 py-1 border transition-colors {% if lang == 'en' %}border-primary text-primary dark:text-white{% else %}border-transparent hover:border-primary hover:text-primary{% endif %}">
+            <a href="{{ '/' | relative_url }}" {% if lang == 'en' %}aria-current="page"{% endif %} class="rounded-full px-3 py-1 border transition-colors {% if lang == 'en' %}border-primary bg-primary text-white pointer-events-none{% else %}border-transparent hover:border-primary hover:text-primary{% endif %}">
               {{ i18n.language_switcher.options.en }}
             </a>
-            <a href="{{ '/fr/' | relative_url }}" class="rounded-full px-3 py-1 border transition-colors {% if lang == 'fr' %}border-primary text-primary dark:text-white{% else %}border-transparent hover:border-primary hover:text-primary{% endif %}">
+            <a href="{{ '/fr/' | relative_url }}" {% if lang == 'fr' %}aria-current="page"{% endif %} class="rounded-full px-3 py-1 border transition-colors {% if lang == 'fr' %}border-primary bg-primary text-white pointer-events-none{% else %}border-transparent hover:border-primary hover:text-primary{% endif %}">
               {{ i18n.language_switcher.options.fr }}
             </a>
           </div>
