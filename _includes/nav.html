@@ -1,0 +1,16 @@
+<nav>
+  <ul>
+    <li><a href="#intro" class="active">{{ i18n.nav.intro }}</a></li>
+    <li><a href="#framework">{{ i18n.nav.framework }}</a></li>
+    <li><a href="#typologies">{{ i18n.nav.typologies }}</a></li>
+    <li><a href="#culture">{{ i18n.nav.culture }}</a></li>
+    <li><a href="#community">{{ i18n.nav.community }}</a></li>
+    <li class="lang-switcher">
+      <span class="sr-only">{{ i18n.language_switcher.label }}</span>
+      <span>
+        <a href="{{ '/' | relative_url }}" class="{% if lang == 'en' %}active{% endif %}">{{ i18n.language_switcher.options.en }}</a>
+        <a href="{{ '/fr/' | relative_url }}" class="{% if lang == 'fr' %}active{% endif %}">{{ i18n.language_switcher.options.fr }}</a>
+      </span>
+    </li>
+  </ul>
+</nav>

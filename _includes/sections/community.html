@@ -1,0 +1,12 @@
+<section id="community">
+  <h2>{{ i18n.community.heading }}</h2>
+  {% for paragraph in i18n.community.paragraphs_html %}
+    <p>{{ paragraph }}</p>
+  {% endfor %}
+  <ul>
+    {% for link in i18n.community.links %}
+      <li><a href="{{ link.href }}">{{ link.label }}</a></li>
+    {% endfor %}
+  </ul>
+  <blockquote>{{ i18n.community.quote }}</blockquote>
+</section>

@@ -1,0 +1,9 @@
+<section id="intro">
+  <h1>{{ i18n.intro.heading }}</h1>
+  <p class="lead">{{ i18n.intro.lead }}</p>
+  <p>{{ i18n.intro.sublead_html }}</p>
+  {% for paragraph in i18n.intro.paragraphs_html %}
+    <p>{{ paragraph }}</p>
+  {% endfor %}
+  <blockquote>{{ i18n.intro.quote }}</blockquote>
+</section>

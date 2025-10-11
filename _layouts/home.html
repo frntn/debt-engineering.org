@@ -1,0 +1,10 @@
+---
+layout: base
+---
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign i18n = site.data.i18n[current_lang] | default: site.data.i18n[site.default_lang] %}
+{% include sections/intro.html i18n=i18n %}
+{% include sections/framework.html i18n=i18n %}
+{% include sections/typologies.html i18n=i18n %}
+{% include sections/culture.html i18n=i18n %}
+{% include sections/community.html i18n=i18n %}

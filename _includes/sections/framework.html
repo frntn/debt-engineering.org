@@ -1,0 +1,11 @@
+<section id="framework">
+  <h2>{{ i18n.framework.heading }}</h2>
+  <p>{{ i18n.framework.description_html }}</p>
+  <pre>{{ i18n.framework.loop }}</pre>
+  <p>{{ i18n.framework.context_html }}</p>
+  {% for step in i18n.framework.steps %}
+    <h3>{{ step.title }}</h3>
+    <p>{{ step.body_html }}</p>
+  {% endfor %}
+  <blockquote>{{ i18n.framework.quote }}</blockquote>
+</section>

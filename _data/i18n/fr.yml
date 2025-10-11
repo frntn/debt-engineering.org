@@ -1,0 +1,71 @@
+meta:
+  title: "Debt Engineering — Le cadre DEBT"
+  description: "Debt Engineering & Bet Tracking — un nouveau paradigme pour gérer la dette d’innovation comme matériau d’apprentissage, pas comme un passif."
+nav:
+  intro: "Intro"
+  framework: "Cadre"
+  typologies: "Typologies"
+  culture: "Culture"
+  community: "Communauté"
+language_switcher:
+  label: "Langue"
+  options:
+    en: "English"
+    fr: "Français"
+intro:
+  heading: "Debt Engineering"
+  lead: "Transformer la dette d’innovation en matériau de progrès."
+  sublead_html: "<em>Le cadre DEBT — Debt Engineering & Bet Tracking.</em>"
+  paragraphs_html:
+    - "Chaque acte d’innovation laisse des traces d’imperfection — raccourcis pris, expérimentations inachevées, systèmes poussés au-delà de leur intention. La plupart des organisations voient ces traces comme des passifs, les qualifiant de « dette ». Et si nous les considérions plutôt comme une <strong>preuve d’apprentissage</strong> ?"
+    - "<strong>Debt Engineering</strong> requalifie la dette, d’un fardeau passif en matériau de conception actif. Il s’agit d’<em>ingénier la dette</em> — la rendre explicite, mesurable et précieuse — pour transformer la friction en clairvoyance. Effacer la dette, c’est effacer l’histoire ; la façonner, c’est gouverner l’évolution."
+    - "En acceptant la dette comme une composante structurelle de la croissance des systèmes, les organisations peuvent passer de la culpabilité à la gouvernance — cultivant une relation plus lucide entre vitesse, risque et connaissance."
+  quote: "La dette n’est pas le prix de l’innovation — c’est son enregistrement."
+framework:
+  heading: "Le cadre DEBT"
+  description_html: "Le cadre DEBT — <strong>Debt Engineering & Bet Tracking</strong> — est un modèle auto-référentiel, à la fois philosophie et pratique. À l’image de l’acronyme récursif de GNU, il parle de lui-même : nous <em>forgons</em> la dette et <em>suivons</em> les paris qui la génèrent."
+  loop: "Façonner → Miser → Suivre → Transformer"
+  context_html: "Ce cycle structure l’innovation non comme du chaos, mais comme un <strong>métabolisme intentionnel de l’apprentissage</strong> — une boucle où la dette est créée, observée et transformée en intelligence stratégique."
+  steps:
+    - title: "Ingénier"
+      body_html: "Ingénier la dette, c’est la rendre visible et délibérée. Plutôt que de considérer des lacunes techniques accidentelles, nous reconnaissons les compromis comme des choix de conception. Nous créons des instruments pour cartographier et mesurer l’endroit où le risque s’accumule. Cet acte de visibilité transforme la fragilité cachée en complexité maîtrisable."
+    - title: "Parier"
+      body_html: "Chaque innovation est un pari : un acte calculé d’incertitude visant une valeur future. Suivre les paris, c’est connaître leurs enjeux, leur durée et leur retour. C’est un acte d’humilité — admettre que nous opérons dans la probabilité, non dans la certitude. C’est ce qui transforme l’improvisation en discipline."
+    - title: "Suivre"
+      body_html: "Suivre, ce n’est pas seulement mesurer les résultats, c’est observer ce que nous apprenons par l’échec et l’itération. La clé est le <em>rendement d’apprentissage</em> — le niveau de compréhension que chaque risque nous procure. Ce que nous mesurons définit ce que nous améliorons ; suivre la dette transforme la rétrospective en mémoire du système."
+    - title: "Transformer"
+      body_html: "La transformation est l’endroit où la friction devient connaissance. Lorsque nous refactorons du code, clarifions la gouvernance ou documentons des patterns, nous remboursons non pas en effaçant, mais en <em>transmutant</em> la dette en insight réutilisable — en créant doctrines, heuristiques de conception et culture à partir de la contrainte."
+  quote: "Nous ne réparons pas la dette — nous l’instrumentons."
+typologies:
+  heading: "Au-delà des typologies classiques"
+  intro_html: "La gestion traditionnelle de la dette se concentre sur trois axes — technique, fonctionnel et organisationnel. Mais dans le paysage contemporain, la dette d’innovation se manifeste sous des formes plus subtiles et systémiques. Debt Engineering propose une taxonomie plus riche qui embrasse l’écosystème complet de l’émergence."
+  items_html:
+    - "<strong>Dette structurelle</strong> — Les compromis architecturaux qui permettent la vitesse mais contraignent l’optionalité future. L’objectif n’est pas l’évitement, mais la traçabilité."
+    - "<strong>Dette cognitive</strong> — Le décalage entre les outils disponibles et la compréhension humaine. C’est le coût de l’apprentissage à grande échelle — et un guide pour savoir où enseigner plutôt que blâmer."
+    - "<strong>Dette expérimentale</strong> — Le résidu de l’innovation rapide : prototypes, PoC et premiers patterns. La gérer signifie distinguer la matière précieuse du déchet toxique."
+    - "<strong>Dette organisationnelle</strong> — Les désalignements entre le rythme de la gouvernance et celui de la livraison. C’est le signal qui révèle où votre structure résiste à votre ambition."
+    - "<strong>Dette éthique</strong> — Le prix de la vitesse en termes humains et planétaires. Quand les choix dépassent la réflexion, la dette éthique nous rappelle que la durabilité est aussi un problème d’ingénierie."
+  outro_html: "En cartographiant ces formes, nous créons une <strong>cartographie de l’apprentissage</strong>. La dette devient un prisme d’intelligence collective — une carte de nos audaces, de nos angles morts et de l’endroit où concentrer notre prochain acte de conception."
+  quote: "Nous n’éliminons pas ces dettes — nous les intégrons à la conception du système."
+culture:
+  heading: "Le changement culturel"
+  paragraphs_html:
+    - "Dans les systèmes hérités, la dette est traitée comme un échec. On demande aux ingénieurs de la nettoyer ; aux managers, de la cacher ; aux dirigeants, de la nier. Mais dans les organisations émergentes, la dette devient un <strong>organe d’adaptation</strong> — le tissu cicatriciel qui renforce le système à chaque itération."
+    - "Debt Engineering remplace la culture de la réparation par une culture de la compréhension. Elle apporte de la littératie à la complexité — rendant les équipes conscientes de la manière dont leurs choix façonnent la flexibilité future. Le <strong>Debt Engineer</strong> émerge comme un nouvel archétype : un designer de contingences, quelqu’un qui architecte des systèmes capables de porter le poids de leur propre évolution."
+    - "C’est une inversion culturelle profonde : de la honte à la stratégie, de la culpabilité à la gouvernance. Elle permet aux organisations de cesser de craindre les résidus de leur progrès et de commencer à <em>en apprendre</em>."
+  quote: "Plus nous allons vite, plus nous devons voir clairement nos dettes."
+community:
+  heading: "Rejoignez les bâtisseurs de la vélocité durable"
+  paragraphs_html:
+    - "Le cadre DEBT est ouvert — une discipline partagée pour celles et ceux qui conçoivent à la frontière de la complexité : architectes, data scientists, stratèges produit, innovateurs. Il unit la maîtrise technique et l’intention stratégique sous une même éthique : <strong>la vitesse consciente</strong>."
+    - "Contribuez à l’évolution de ce cadre. Documentez vos patterns, vos expériences, vos apprentissages. Ensemble, nous construisons la grammaire d’une vitesse durable — une éthique de l’innovation qui reconnaît le coût du mouvement sans le paralyser."
+  links:
+    - href: "https://github.com/frntn/debt-engineering.github.io"
+      label: "Contribuer sur GitHub"
+    - href: "#"
+      label: "Lire le manifeste ouvert"
+    - href: "#"
+      label: "Rejoindre la discussion"
+  quote: "Debt Engineering est l’éthique de la vélocité — concevoir des systèmes qui apprennent plus vite qu’ils ne se brisent."
+footer:
+  notice_html: "<small>© 2025 Debt Engineering Initiative — publié sous licence CC BY 4.0<br>Construit pour les bâtisseurs.</small>"

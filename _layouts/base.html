@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% assign current_lang = page.lang | default: site.default_lang %}
+{% assign i18n = site.data.i18n[current_lang] | default: site.data.i18n[site.default_lang] %}
+<html lang="{{ current_lang }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ i18n.meta.title }}</title>
+  <meta name="description" content="{{ i18n.meta.description }}">
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+  {% seo %}
+  <style>
+    :root { --accent: #003cff; }
+    @media (prefers-color-scheme: dark) { :root { --accent: #5b7eff; } }
+    html { scroll-behavior: smooth; }
+    nav { position: fixed; top: 0; width: 100%; background: var(--pico-background-color); border-bottom: 1px solid var(--pico-muted-border-color); z-index: 1000; backdrop-filter: blur(8px); }
+    nav ul { display: flex; justify-content: center; align-items: center; list-style: none; margin: 0; padding: 0.75rem 1rem; flex-wrap: wrap; gap: 0.75rem; }
+    nav li { margin: 0; }
+    nav a { text-decoration: none; color: var(--pico-muted-color); font-weight: 500; }
+    nav a.active { color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 0.25rem; }
+    nav li.lang-switcher { margin-left: 2rem; }
+    nav .lang-switcher a { padding: 0.35rem 0.9rem; border-radius: 999px; border: 1px solid var(--pico-muted-border-color); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 0.35rem; }
+    nav .lang-switcher a.active { border-color: var(--accent); color: var(--accent); }
+    nav .lang-switcher span { display: inline-flex; align-items: center; gap: 0.35rem; }
+    main { padding-top: 6.5rem; max-width: 850px; margin: auto; line-height: 1.7; }
+    section { margin: 5rem 0; }
+    pre { background: var(--pico-muted-border-color); padding: 1rem; border-radius: 4px; overflow-x: auto; }
+    blockquote { border-left: 4px solid var(--accent); padding-left: 1rem; font-style: italic; }
+    footer { text-align: center; margin: 4rem 0 2rem 0; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+    @media (max-width: 640px) {
+      nav li.lang-switcher { margin-left: 0; width: 100%; display: flex; justify-content: center; }
+      main { padding-top: 7.5rem; }
+    }
+  </style>
+</head>
+<body>
+  {% include nav.html lang=current_lang i18n=i18n %}
+  <main>
+    {{ content }}
+  </main>
+  {% include footer.html lang=current_lang i18n=i18n %}
+  <script>
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    const highlightCurrentSection = () => {
+      let current = '';
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 150;
+        if (window.scrollY >= sectionTop) current = section.id;
+      });
+      navLinks.forEach((link) => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', highlightCurrentSection);
+    highlightCurrentSection();
+  </script>
+</body>
+</html>

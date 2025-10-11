@@ -1,0 +1,27 @@
+title: Debt Engineering
+description: Debt Engineering & Bet Tracking — a new paradigm for managing innovation debt as a material for learning, not a liability.
+default_lang: en
+languages:
+  - en
+  - fr
+permalink: "/:path/"
+collections:
+  posts:
+    output: false
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: home
+      lang: en
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - package.json
+  - package-lock.json
