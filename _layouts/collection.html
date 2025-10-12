@@ -2,6 +2,7 @@
 layout: base
 ---
 {% assign coll = page.collection %}
+{% assign coll_docs = site.collections[coll] | default: nil %}
 <section class="py-12">
   <div class="mb-8 text-center">
     <h1 class="text-3xl md:text-4xl font-extrabold tracking-[-0.02em] text-gray-900 dark:text-white">{{ page.title }}</h1>
@@ -10,7 +11,11 @@ layout: base
     {% endif %}
   </div>
   <div class="grid gap-6">
-    {% assign items = site[coll] | where: 'lang', page.lang | sort: 'order' %}
+    {% if coll_docs %}
+      {% assign items = coll_docs.docs | where: 'lang', page.lang | sort: 'order' %}
+    {% else %}
+      {% assign items = site[coll] | where: 'lang', page.lang | sort: 'order' %}
+    {% endif %}
     {% for p in items %}
       <article class="rounded-lg border border-gray-200 dark:border-gray-800 bg-white/70 dark:bg-white/5 p-6">
         <h2 class="text-xl font-bold text-gray-900 dark:text-white">
@@ -26,4 +31,3 @@ layout: base
     {% endfor %}
   </div>
 </section>
-
