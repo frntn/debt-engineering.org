@@ -10,6 +10,12 @@
         <h2 class="text-lg font-bold tracking-[-0.015em]">{{ i18n.meta.brand }}</h2>
       </div>
       <div class="flex flex-1 items-center justify-end gap-6 md:gap-8">
+        {% if lang == site.default_lang %}
+          {% assign section_base_path = '/' %}
+        {% else %}
+          {% assign section_base_path = '/' | append: lang | append: '/' %}
+        {% endif %}
+        {% assign section_base_url = section_base_path | relative_url %}
         <nav class="hidden md:flex items-center gap-9">
           {% for item in i18n.nav.items %}
             {% if item.url %}
@@ -17,7 +23,7 @@
                 {{ item.label }}
               </a>
             {% else %}
-              <a href="#{{ item.id }}" data-section-target="{{ item.id }}" class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 transition-colors hover:text-primary dark:hover:text-primary">
+              <a href="{{ section_base_url }}#{{ item.id }}" data-section-target="{{ item.id }}" class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 transition-colors hover:text-primary dark:hover:text-primary">
                 {{ item.label }}
               </a>
             {% endif %}
