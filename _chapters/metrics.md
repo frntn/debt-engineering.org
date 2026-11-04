@@ -1,7 +1,9 @@
 ---
 layout: chapter
 title: Metrics — Learning Yield, Carry Cost, and More
-summary: Definitions, formulas, and pragmatic collection methods to make debt actionable.
+description: Definitions, formulas, and pragmatic collection methods to make debt actionable.
+permalink: /chapters/metrics/
+date: 2025-10-12
 order: 2
 lang: en
 ---

@@ -1,3 +1,4 @@
 <footer class="mt-16 border-t border-gray-200 dark:border-gray-800 py-10 text-center text-sm text-gray-600 dark:text-gray-400">
-  <p>{{ i18n.footer.notice_html }}</p>
+  {% assign year = site.time | date: "%Y" %}
+  <p>{{ i18n.footer.notice_html | replace: "YEAR", year }}</p>
 </footer>

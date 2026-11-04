@@ -1,8 +1,9 @@
 meta:
-  title: "Debt Engineering — The DEBT Framework"
-  description: "Debt Engineering & Bet Tracking — a new paradigm for managing innovation debt as a material for learning, not a liability."
   brand: "DEBT Framework"
 nav:
+  label: "Primary"
+  open_menu: "Open menu"
+  close_menu: "Close menu"
   items:
     - id: "intro"
       label: "Introduction"
@@ -16,6 +17,7 @@ nav:
       label: "Community"
     - url: "/chapters/"
       label: "Book"
+theme_toggle: "Toggle color theme"
 language_switcher:
   label: "Language"
   options:
@@ -77,15 +79,15 @@ community:
     - "The DEBT Framework is open — a shared discipline for those who design at the edge of complexity: architects, data scientists, product strategists, innovators. It unites technical craft and strategic intent under a single ethos: <strong>velocity with conscience</strong>."
     - "Contribute to the evolution of this framework. Document your patterns, your experiments, your learnings. Together, we are building the grammar of sustainable speed — an ethics of innovation that acknowledges the cost of movement without paralyzing it."
   links:
-    - href: "https://github.com/frntn/debt-engineering.github.io"
+    - href: "https://github.com/frntn/debt-engineering.org"
       label: "View on GitHub"
       icon: "code"
-    - href: "#"
+    - href: "/chapters/foundations/"
       label: "Read the Manifesto"
       icon: "article"
-    - href: "#"
+    - href: "https://github.com/frntn/debt-engineering.org/discussions"
       label: "Start a Discussion"
       icon: "forum"
   quote: "Debt Engineering is the ethics of velocity — designing systems that learn faster than they break."
 footer:
-  notice_html: "<small>© 2025 Debt Engineering Initiative — released under CC BY 4.0<br>Built for the builders.</small>"
+  notice_html: '<small>© YEAR Debt Engineering Initiative — released under <a class="underline hover:text-primary" rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a><br>Built for the builders.</small>'

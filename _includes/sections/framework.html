@@ -11,7 +11,7 @@
     {% for step in i18n.framework.steps %}
       <div class="flex flex-col items-center rounded-lg border border-gray-200 dark:border-gray-800 bg-white/70 dark:bg-white/5 p-6 text-center shadow-sm">
         <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20">
-          <span class="material-symbols-outlined text-3xl text-primary">{{ step.icon }}</span>
+          <span class="material-symbols-outlined text-3xl text-primary" aria-hidden="true">{{ step.icon }}</span>
         </div>
         <h3 class="text-lg font-bold text-gray-900 dark:text-white">{{ step.title }}</h3>
         <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{{ step.body_html }}</p>

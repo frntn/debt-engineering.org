@@ -1,7 +1,9 @@
 ---
 layout: chapter
 title: Foundations — Debt as a Design Material
-summary: Core principles and the Engineer → Bet → Track → Transform loop.
+description: Core principles and the Engineer → Bet → Track → Transform loop.
+permalink: /chapters/foundations/
+date: 2025-10-12
 order: 1
 lang: en
 ---
