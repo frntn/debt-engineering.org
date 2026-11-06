@@ -1,49 +1,105 @@
+{% assign nav_lang = include.lang | default: lang | default: page.lang | default: site.default_lang %}
+{% assign base = site.baseurl | default: "" %}
+{% if nav_lang == site.default_lang %}
+  {% assign home_path = "/" %}
+{% else %}
+  {% assign home_path = "/" | append: nav_lang | append: "/" %}
+{% endif %}
+{% assign home_url = base | append: home_path %}
+{% comment %}
+  Book listing exists only in English today. If a localized /<lang>/chapters/
+  page is added later, point that language at it; otherwise keep the English
+  chapters and say so in the label.
+{% endcomment %}
+{% assign chapters_path = "/chapters/" %}
+{% assign chapters_note = "" %}
+{% if nav_lang != site.default_lang %}
+  {% assign localized_chapters = "/" | append: nav_lang | append: "/chapters/" %}
+  {% assign localized_chapter_page = site.pages | where: "url", localized_chapters | first %}
+  {% if localized_chapter_page %}
+    {% assign chapters_path = localized_chapters %}
+  {% else %}
+    {% assign chapters_note = " (EN)" %}
+  {% endif %}
+{% endif %}
 <header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
-  <div class="px-4 md:px-10 lg:px-20 flex justify-center">
-    <div class="flex w-full max-w-[960px] items-center justify-between border-b border-gray-200 dark:border-gray-800 px-4 py-3">
-      <div class="flex items-center gap-4 text-gray-900 dark:text-white">
-        <div class="h-5 w-5">
-          <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" />
-          </svg>
-        </div>
-        <h2 class="text-lg font-bold tracking-[-0.015em]">{{ i18n.meta.brand }}</h2>
-      </div>
-      <div class="flex flex-1 items-center justify-end gap-6 md:gap-8">
-        {% if lang == site.default_lang %}
-          {% assign section_base_path = '/' %}
-        {% else %}
-          {% assign section_base_path = '/' | append: lang | append: '/' %}
-        {% endif %}
-        {% assign section_base_url = section_base_path | relative_url %}
-        <nav class="hidden md:flex items-center gap-9">
-          {% for item in i18n.nav.items %}
-            {% if item.url %}
-              <a href="{{ item.url | relative_url }}" class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 transition-colors hover:text-primary dark:hover:text-primary">
-                {{ item.label }}
+  <div class="px-3 md:px-10 lg:px-20 flex justify-center">
+    <div class="flex w-full max-w-[960px] flex-col">
+      <div class="flex w-full items-center justify-between gap-2 border-b border-gray-200 dark:border-gray-800 px-1 md:px-4 py-3">
+        <a href="{{ home_url }}" class="flex items-center gap-4 text-gray-900 dark:text-white">
+          <span class="h-5 w-5 shrink-0" aria-hidden="true">
+            <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" />
+            </svg>
+          </span>
+          <span class="text-lg font-bold leading-tight tracking-[-0.015em]">{{ i18n.meta.brand }}</span>
+        </a>
+        <div class="flex flex-1 items-center justify-end gap-4 md:gap-8">
+          <nav aria-label="{{ i18n.nav.label }}" class="hidden md:flex items-center gap-9">
+            {% for item in i18n.nav.items %}
+              {% if item.url %}
+                {% if item.url == "/chapters/" %}
+                  {% assign href = base | append: chapters_path %}
+                  {% assign label = item.label | append: chapters_note %}
+                {% else %}
+                  {% assign href = base | append: item.url %}
+                  {% assign label = item.label %}
+                {% endif %}
+                <a href="{{ href }}" class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 transition-colors hover:text-primary dark:hover:text-primary">
+                  {{ label }}
+                </a>
+              {% else %}
+                <a href="{{ home_url }}#{{ item.id }}" data-section-target="{{ item.id }}" class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 transition-colors hover:text-primary dark:hover:text-primary">
+                  {{ item.label }}
+                </a>
+              {% endif %}
+            {% endfor %}
+          </nav>
+          <div class="flex shrink-0 items-center gap-1.5 md:gap-3">
+            <button id="theme-toggle" type="button" class="flex h-10 w-10 items-center justify-center rounded bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white" aria-label="{{ i18n.theme_toggle }}">
+              <span class="material-symbols-outlined" aria-hidden="true">dark_mode</span>
+            </button>
+            <div class="flex items-center gap-1 md:gap-2 text-sm font-medium text-gray-600 dark:text-gray-300">
+              <span class="sr-only">{{ i18n.language_switcher.label }}</span>
+              <a href="{{ base }}/" aria-label="{{ i18n.language_switcher.options.en }}" {% if nav_lang == "en" %}aria-current="page"{% endif %} class="rounded-full px-2 py-1 md:px-3 border transition-colors {% if nav_lang == 'en' %}border-primary bg-primary text-white pointer-events-none{% else %}border-transparent hover:border-primary hover:text-primary{% endif %}">
+                <span class="md:hidden">EN</span>
+                <span class="hidden md:inline">{{ i18n.language_switcher.options.en }}</span>
               </a>
-            {% else %}
-              <a href="{{ section_base_url }}#{{ item.id }}" data-section-target="{{ item.id }}" class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 transition-colors hover:text-primary dark:hover:text-primary">
-                {{ item.label }}
+              <a href="{{ base }}/fr/" aria-label="{{ i18n.language_switcher.options.fr }}" {% if nav_lang == "fr" %}aria-current="page"{% endif %} class="rounded-full px-2 py-1 md:px-3 border transition-colors {% if nav_lang == 'fr' %}border-primary bg-primary text-white pointer-events-none{% else %}border-transparent hover:border-primary hover:text-primary{% endif %}">
+                <span class="md:hidden">FR</span>
+                <span class="hidden md:inline">{{ i18n.language_switcher.options.fr }}</span>
               </a>
-            {% endif %}
-          {% endfor %}
-        </nav>
-        <div class="flex items-center gap-3">
-          <button id="theme-toggle" type="button" class="flex h-10 w-10 items-center justify-center rounded bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white" aria-label="Toggle color theme">
-            <span class="material-symbols-outlined">dark_mode</span>
-          </button>
-          <div class="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-300">
-            <span class="sr-only">{{ i18n.language_switcher.label }}</span>
-            <a href="{{ '/' | relative_url }}" {% if lang == 'en' %}aria-current="page"{% endif %} class="rounded-full px-3 py-1 border transition-colors {% if lang == 'en' %}border-primary bg-primary text-white pointer-events-none{% else %}border-transparent hover:border-primary hover:text-primary{% endif %}">
-              {{ i18n.language_switcher.options.en }}
-            </a>
-            <a href="{{ '/fr/' | relative_url }}" {% if lang == 'fr' %}aria-current="page"{% endif %} class="rounded-full px-3 py-1 border transition-colors {% if lang == 'fr' %}border-primary bg-primary text-white pointer-events-none{% else %}border-transparent hover:border-primary hover:text-primary{% endif %}">
-              {{ i18n.language_switcher.options.fr }}
-            </a>
+            </div>
+            <button id="menu-toggle" type="button" class="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white md:hidden" aria-expanded="false" aria-controls="mobile-nav" aria-label="{{ i18n.nav.open_menu }}" data-label-open="{{ i18n.nav.open_menu }}" data-label-close="{{ i18n.nav.close_menu }}">
+              <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+            </button>
           </div>
         </div>
       </div>
+      <nav id="mobile-nav" hidden class="md:hidden max-h-[calc(100vh-4rem)] overflow-y-auto border-b border-gray-200 dark:border-gray-800 px-4 py-2" aria-label="{{ i18n.nav.label }}">
+        <ul class="flex flex-col">
+          {% for item in i18n.nav.items %}
+            <li>
+              {% if item.url %}
+                {% if item.url == "/chapters/" %}
+                  {% assign href = base | append: chapters_path %}
+                  {% assign label = item.label | append: chapters_note %}
+                {% else %}
+                  {% assign href = base | append: item.url %}
+                  {% assign label = item.label %}
+                {% endif %}
+                <a href="{{ href }}" class="block py-3 text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 transition-colors hover:text-primary dark:hover:text-primary">
+                  {{ label }}
+                </a>
+              {% else %}
+                <a href="{{ home_url }}#{{ item.id }}" data-section-target="{{ item.id }}" class="block py-3 text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 transition-colors hover:text-primary dark:hover:text-primary">
+                  {{ item.label }}
+                </a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
     </div>
   </div>
 </header>

@@ -11,8 +11,13 @@
   </div>
   <div class="mt-12 flex flex-col items-center justify-center gap-4 md:flex-row md:gap-8">
     {% for link in i18n.community.links %}
-      <a href="{{ link.href }}" class="flex items-center gap-2 text-primary font-medium hover:underline">
-        {% if link.icon %}<span class="material-symbols-outlined text-xl">{{ link.icon }}</span>{% endif %}
+      {% assign href = link.href %}
+      {% if href contains "://" %}
+        <a href="{{ href }}" class="flex items-center gap-2 text-primary font-medium hover:underline" rel="noopener noreferrer">
+      {% else %}
+        <a href="{{ site.baseurl | append: href }}" class="flex items-center gap-2 text-primary font-medium hover:underline">
+      {% endif %}
+        {% if link.icon %}<span class="material-symbols-outlined text-xl" aria-hidden="true">{{ link.icon }}</span>{% endif %}
         {{ link.label }}
       </a>
     {% endfor %}

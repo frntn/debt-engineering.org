@@ -1,8 +1,9 @@
 meta:
-  title: "Debt Engineering — Le cadre DEBT"
-  description: "Debt Engineering & Bet Tracking — un nouveau paradigme pour gérer la dette d'innovation comme matériau d'apprentissage, pas comme un passif."
   brand: "Cadre DEBT"
 nav:
+  label: "Navigation principale"
+  open_menu: "Ouvrir le menu"
+  close_menu: "Fermer le menu"
   items:
     - id: "intro"
       label: "Introduction"
@@ -16,6 +17,7 @@ nav:
       label: "Communauté"
     - url: "/chapters/"
       label: "Livre"
+theme_toggle: "Changer le thème de couleur"
 language_switcher:
   label: "Langue"
   options:
@@ -77,15 +79,15 @@ community:
     - "Le cadre DEBT est ouvert — une discipline partagée pour celles et ceux qui conçoivent à la frontière de la complexité : architectes, data scientists, stratèges produit, innovateurs. Il unit la maîtrise technique et l'intention stratégique sous une même éthique : <strong>la vitesse consciente</strong>."
     - "Contribuez à l'évolution de ce cadre. Documentez vos patterns, vos expériences, vos apprentissages. Ensemble, nous construisons la grammaire d'une vitesse durable — une éthique de l'innovation qui reconnaît le coût du mouvement sans le paralyser."
   links:
-    - href: "https://github.com/frntn/debt-engineering.github.io"
+    - href: "https://github.com/frntn/debt-engineering.org"
       label: "Voir sur GitHub"
       icon: "code"
-    - href: "#"
-      label: "Lire le manifeste"
+    - href: "/chapters/foundations/"
+      label: "Lire le manifeste (EN)"
       icon: "article"
-    - href: "#"
+    - href: "https://github.com/frntn/debt-engineering.org/discussions"
       label: "Initier une discussion"
       icon: "forum"
   quote: "Debt Engineering est l'éthique de la vélocité — concevoir des systèmes qui apprennent plus vite qu'ils ne se brisent."
 footer:
-  notice_html: "<small>© 2025 Debt Engineering Initiative — publié sous licence CC BY 4.0<br>Construit pour les bâtisseurs.</small>"
+  notice_html: '<small>© YEAR Debt Engineering Initiative — publié sous licence <a class="underline hover:text-primary" rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a><br>Construit pour les bâtisseurs.</small>'

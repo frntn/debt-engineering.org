@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 {% assign current_lang = page.lang | default: site.default_lang %}
+{% assign lang = current_lang %}
 {% assign i18n = site.data.i18n[current_lang] | default: site.data.i18n[site.default_lang] %}
 <html lang="{{ current_lang }}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ i18n.meta.title }}</title>
-  <meta name="description" content="{{ i18n.meta.description }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
@@ -45,8 +44,39 @@
     .material-symbols-outlined {
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
+    .content p + p,
+    .content ul,
+    .content ol {
+      margin-top: 1rem;
+    }
+    .content ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+    }
+    .content ol {
+      list-style: decimal;
+      padding-left: 1.5rem;
+    }
   </style>
   {% seo %}
+  {% feed_meta %}
+  {% unless page.noindex %}
+    {% if page.lang == "fr" %}
+      <link rel="alternate" hreflang="fr" href="{{ site.url }}{{ page.url }}" />
+      <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.en_url | default: '/' }}" />
+      <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.en_url | default: '/' }}" />
+    {% elsif page.fr_url %}
+      <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.url }}" />
+      <link rel="alternate" hreflang="fr" href="{{ site.url }}{{ page.fr_url }}" />
+      <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url }}" />
+    {% else %}
+      <link rel="alternate" hreflang="{{ page.lang | default: site.lang | default: 'en' }}" href="{{ site.url }}{{ page.url }}" />
+      <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url }}" />
+    {% endif %}
+  {% endunless %}
+  {% if page.noindex %}
+    <meta name="robots" content="noindex, nofollow" />
+  {% endif %}
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white">
   <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
@@ -98,6 +128,39 @@
     });
 
     syncTheme();
+
+    const menuButton = document.getElementById('menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const setMenuOpen = (open) => {
+      if (!menuButton || !mobileNav) return;
+      menuButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuButton.setAttribute('aria-label', open ? menuButton.dataset.labelClose : menuButton.dataset.labelOpen);
+      const icon = menuButton.querySelector('.material-symbols-outlined');
+      if (icon) icon.textContent = open ? 'close' : 'menu';
+      if (open) mobileNav.removeAttribute('hidden');
+      else mobileNav.setAttribute('hidden', '');
+    };
+
+    menuButton?.addEventListener('click', () => {
+      setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
+        setMenuOpen(false);
+        menuButton.focus();
+      }
+    });
+
+    mobileNav?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMenuOpen(false));
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!menuButton || !mobileNav || mobileNav.hasAttribute('hidden')) return;
+      if (menuButton.contains(event.target) || mobileNav.contains(event.target)) return;
+      setMenuOpen(false);
+    });
   </script>
 </body>
 </html>
